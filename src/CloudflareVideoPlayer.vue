@@ -5,7 +5,7 @@
       :src="videoId"
       controls
       poster
-      :autoplay="autoPlay"
+      :autoplay="autoplay"
       style="width:100%; height:0; padding:0 0 55% 0;overflow: hidden;"
       @error="error"
     >
@@ -20,6 +20,10 @@
 </template>
 
 <script>
+import Vue from "vue";
+
+Vue.config.ignoredElements = ["stream"];
+
 export default {
   name: "CloudflareVideoPlayer",
   props: {
@@ -27,7 +31,7 @@ export default {
       type: String,
       default: null
     },
-    autoPlay: {
+    autoplay: {
       type: Boolean,
       default: false
     }
@@ -68,9 +72,7 @@ export default {
       );
       tag.setAttribute("id", "cloudflareplayer");
       tag.setAttribute("type", "text/javascript");
-      tag.onload = () => {
-        //this.loadPlayer()
-      };
+      tag.onload = () => {};
       document.head.appendChild(tag);
     }
   }

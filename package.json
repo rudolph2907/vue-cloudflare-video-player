@@ -1,8 +1,8 @@
 {
   "name": "vue-cloudflare-video-player",
   "private": false,
-  "version": "0.0.1",
-  "description": "Vue component for the Cloudflare Stream Player ",
+  "version": "0.0.5",
+  "description": "Vue wrapper component for the Cloudflare Stream Video Player",
   "main": "dist/cloudflarevideoplayer.umd.js",
   "module": "dist/cloudflarevideoplayer.esm.js",
   "unpkg": "dist/cloudflarevideoplayer.min.js",

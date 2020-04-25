@@ -1,39 +1,23 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.CloudflareVideoPlayer = {}));
-}(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
+  (global = global || self, factory(global.CloudflareVideoPlayer = {}, global.Vue));
+}(this, (function (exports, Vue) { 'use strict';
+
+  Vue = Vue && Object.prototype.hasOwnProperty.call(Vue, 'default') ? Vue['default'] : Vue;
 
   //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
+
+  Vue.config.ignoredElements = ["stream"];
 
   var script = {
-    name: 'CloudflareVideoPlayer',
+    name: "CloudflareVideoPlayer",
     props: {
       videoId: {
         type: String,
         default: null
       },
-      autoPlay: {
+      autoplay: {
         type: Boolean,
         default: false
       }
@@ -43,7 +27,7 @@
         player: null,
         reload: false,
         key: 0
-      }
+      };
     },
     mounted: function mounted() {
       this.initPlayer();
@@ -63,20 +47,18 @@
         this.initPlayer();
       },
       error: function error(err) {
-        this.$emit('error', err);
+        this.$emit("error", err);
         this.reload = true;
       },
       initPlayer: function initPlayer() {
-        var tag = document.createElement('script');
+        var tag = document.createElement("script");
         tag.setAttribute(
-          'src',
+          "src",
           ("//embed.cloudflarestream.com/embed/r4xu.fla9.latest.js?video=" + (this.videoId))
         );
-        tag.setAttribute('id', 'cloudflareplayer');
-        tag.setAttribute('type', 'text/javascript');
-        tag.onload = function () {
-          //this.loadPlayer()
-        };
+        tag.setAttribute("id", "cloudflareplayer");
+        tag.setAttribute("type", "text/javascript");
+        tag.onload = function () {};
         document.head.appendChild(tag);
       }
     }
@@ -221,13 +203,13 @@
   var __vue_script__ = script;
 
   /* template */
-  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('stream',{key:_vm.key,staticStyle:{"width":"100%","height":"0","padding":"0 0 55% 0","overflow":"hidden"},attrs:{"src":_vm.videoId,"controls":"","poster":"","autoplay":_vm.autoPlay},on:{"error":_vm.error}}),_vm._v(" "),(_vm.reload)?_c('div',[_vm._v("\n    Busy encoding ...\n    "),_c('a',{attrs:{"href":""},on:{"click":function($event){$event.preventDefault();return _vm.refresh($event)}}},[_vm._v("\n      Reload\n    ")])]):_vm._e()],1)};
+  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('stream',{key:_vm.key,staticStyle:{"width":"100%","height":"0","padding":"0 0 55% 0","overflow":"hidden"},attrs:{"src":_vm.videoId,"controls":"","poster":"","autoplay":_vm.autoplay},on:{"error":_vm.error}}),_vm._v(" "),(_vm.reload)?_c('div',[_vm._v("\n    Busy encoding ...\n    "),_c('a',{attrs:{"href":""},on:{"click":function($event){$event.preventDefault();return _vm.refresh($event)}}},[_vm._v("\n      Reload\n    ")])]):_vm._e()],1)};
   var __vue_staticRenderFns__ = [];
 
     /* style */
     var __vue_inject_styles__ = function (inject) {
       if (!inject) { return }
-      inject("data-v-5994f534_0", { source: ".vjs-error-display .vjs-modal-dialog-content{display:none}", map: undefined, media: undefined });
+      inject("data-v-5dd59edf_0", { source: ".vjs-error-display .vjs-modal-dialog-content{display:none}", map: undefined, media: undefined });
 
     };
     /* scoped */
@@ -253,7 +235,7 @@
 
   var index = {
     install: function install(Vue, options) {
-      Vue.component('cloudflare-video-player', CloudflareVideoPlayer);
+      Vue.component('CloudflareVideoPlayer', CloudflareVideoPlayer);
     },
   };
 
