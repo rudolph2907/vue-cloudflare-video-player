@@ -216,7 +216,7 @@ var __vue_staticRenderFns__ = [];
   
 
   
-  var CloudflareVideoPlayer = normalizeComponent_1(
+  var component = normalizeComponent_1(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
@@ -227,10 +227,27 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-var index = {
-  install: function install(Vue, options) {
-    Vue.component('CloudflareVideoPlayer', CloudflareVideoPlayer);
-  },
+function install(Vue) {
+  if (install.installed) { return }
+  install.installed = true;
+  Vue.component('CloudflareVideoPlayer', component);
+}
+
+var plugin = {
+  install: install,
 };
 
-export default index;
+var GlobalVue = null;
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue;
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.vue;
+}
+
+if (GlobalVue) {
+  GlobalVue.use(plugin);
+}
+
+component.install = install;
+
+export default component;

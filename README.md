@@ -25,6 +25,19 @@ import CloudflareVideoPlayer from 'vue-cloudflare-video-player'
 Vue.use(CloudflareVideoPlayer)
 ```
 
+## Install locally:
+
+```
+import CloudflareVideoPlayer from "vue-cloudflare-video-player";
+
+export default {
+  name: "App",
+  components: {
+    CloudflareVideoPlayer
+  }
+};
+```
+
 ## Usage:
 
 ```
